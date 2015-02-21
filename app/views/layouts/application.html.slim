@@ -6,4 +6,8 @@ html
     == javascript_include_tag 'application', 'data-turbolinks-track' => true
     == csrf_meta_tags
   body
+    - if current_user
+      .container
+        .pull-right
+          == link_to "Log out", sessions_path, method: :delete
     == yield

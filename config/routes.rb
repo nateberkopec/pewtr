@@ -3,7 +3,7 @@ Rails.application.routes.draw do
 
   root to: 'static#index'
 
-  resource :sessions, only: [:create]
+  resource :sessions, only: [:create, :destroy]
   scope :auth do
     match ':provider/callback', to: 'sessions#create', via: [:get, :post]
     #match 'failure', to: redirect('/'), via: [:get, :post]
