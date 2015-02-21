@@ -1,5 +1,6 @@
 class SessionsController < ApplicationController
   skip_before_filter :verify_authenticity_token, only: [:create]
+  skip_before_filter :check_user_logged_in!
 
   def create
     user = User.from_omniauth(ActionController::Parameters.new(env['omniauth.auth']).permit!)
