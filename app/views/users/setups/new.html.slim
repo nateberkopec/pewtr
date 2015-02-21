@@ -1,0 +1,26 @@
+.container
+  h1
+    | Welcome!
+    .small You are signed in with Steam.
+  p.lead Now, we just need to know a few things about your preferred gaming computer.
+
+  h3 The computer I normally game on...
+
+  .big
+  == form_for @user, remote: true do |f|
+    .checkbox
+      == f.label :has_windows do
+        == f.check_box :has_windows
+        | Runs Windows
+    .checkbox
+      == f.label :has_mac do
+        == f.check_box :has_mac
+        | Runs Mac OS X
+    .checkbox
+      == f.label :has_linux do
+        == f.check_box :has_linux
+        | Runs Linux
+    .help-block
+      | Select as many as you like. This will determine what you have in common with your friends.
+
+    == f.submit 'Next', class: 'btn btn-primary btn-lg'
