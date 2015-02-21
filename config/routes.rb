@@ -14,6 +14,7 @@ Rails.application.routes.draw do
 
     scope module: 'users' do
       resource :setup, only: [:new, :create]
+      resource :dashboard, only: [:show]
     end
   end
 end

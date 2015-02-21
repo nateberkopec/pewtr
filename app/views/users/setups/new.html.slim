@@ -4,10 +4,9 @@
     .small You are signed in with Steam.
   p.lead Now, we just need to know a few things about your preferred gaming computer.
 
-  h3 The computer I normally game on...
-
-  .big
   == form_for @user, remote: true do |f|
+    h4 The computer I normally game on...
+    h6.text-uppercase operating system
     .checkbox
       == f.label :has_windows do
         == f.check_box :has_windows
@@ -21,6 +20,41 @@
         == f.check_box :has_linux
         | Runs Linux
     .help-block
-      | Select as many as you like. This will determine what you have in common with your friends.
+      | Select as many as you like. This will determine what games you have in common with your friends.
+    h6.text-uppercase spec
+    .radio
+      == f.label :system_spec do
+        == f.radio_button :system_spec, :low
+        | Low spec (Integrated graphics)
+    .radio
+      == f.label :system_spec do
+        == f.radio_button :system_spec, :medium
+        | Medium spec (Discrete graphics, but medium-tier card)
+    .radio
+      == f.label :system_spec do
+        == f.radio_button :system_spec, :high
+        | High spec (High-tier graphics card like NVIDIA GTX 970)
+    h4 My name is...
+    .form-group.form-inline
+      == f.text_field :first_name, class: 'form-control', placeholder: "Your first name"
+      == f.text_field :last_name, class: 'form-control', placeholder: "Your last name"
+    .help-block
+      | This will only be shared with your friends.
 
-    == f.submit 'Next', class: 'btn btn-primary btn-lg'
+    ul.errors.bg-danger style="display: none; padding-top: 15px; padding-bottom: 15px"
+
+
+    == f.submit 'Save', class: 'btn btn-primary btn-lg'
+
+javascript:
+  $('form.edit_user').on('ajax:error', function(xhr, status, error) {
+    var err_element = $(this).find('ul.errors')
+    $.each(status.responseJSON.errors, function(i, el) {
+      err_element.append("<li>" + el + "</li>")
+    })
+    err_element.addClass("show");
+  });
+
+  $('form.edit_user').on('ajax:success', function(xhr, status, error) {
+    window.location = "#{user_dashboard_path(@user)}"
+  });

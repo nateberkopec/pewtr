@@ -10,5 +10,5 @@ html
     - if current_user
       .container
         .pull-right
-          == link_to "Log out", sessions_path, method: :delete
+          == link_to "Log out", sessions_path, method: :delete, class: 'btn btn-sm'
     == yield
