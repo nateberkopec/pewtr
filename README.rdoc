@@ -1,28 +1,16 @@
-== README
+## README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Pewtr is a service for planning video game nights with your friends, via Steam.
 
-Things you may want to cover:
+Log in with Steam, tell Pewtr your operating system(s)
+and general system spec (Low, Medium, High),
+and Pewtr will automatically import all of your Steam games and tell you which
+games you and your friends have in common. You can vote on which games to play
+together, and then set a date and time for your event
 
-* Ruby version
+## Future features
 
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
-
-
-Please feel free to use a different markup language if you do not plan to run
-<tt>rake doc:app</tt>.
+* Stat tracking
+* Private servers at the click of a button
+* Paid subscriptions
+* PSN and XBox Live support
