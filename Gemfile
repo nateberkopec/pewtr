@@ -14,6 +14,7 @@ gem 'pg'
 gem 'thin'
 gem 'omniauth-openid'
 gem 'jquery-rails'
+gem 'cancancan', '~> 1.10'
 
 # gem 'jbuilder', '~> 2.0'
 # gem 'bcrypt', '~> 3.1.7'

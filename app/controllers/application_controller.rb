@@ -4,6 +4,10 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
   before_filter :check_user_logged_in!
 
+  rescue_from CanCan::AccessDenied do |exception|
+    redirect_to root_url, alert: exception.message
+  end
+
   include ApplicationHelper
 
   def check_user_logged_in!
@@ -17,7 +21,7 @@ class ApplicationController < ActionController::Base
     respond_to do |format|
       format.html do
         flash.now[:error] = "Sorry, we couldn't find what you're looking for."
-        render "home/index", status: :not_found
+        render "static/index", status: :not_found
       end
       format.json { head :not_found }
     end
@@ -27,7 +31,7 @@ class ApplicationController < ActionController::Base
     respond_to do |format|
       format.html do
         flash.now[:error] = "I'm sorry, I can't do that, Dave."
-        render "home/index", status: :unprocessable_entity
+        render "static/index", status: :unprocessable_entity
       end
       format.json { head :unprocessable_entity }
     end

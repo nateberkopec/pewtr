@@ -1,6 +1,9 @@
 class UsersController < ApplicationController
+  check_authorization
+
   def update
     @user = User.find(params[:id])
+    authorize! :update, @user
     if @user.update_attributes(user_params_for_update)
       respond_to do |format|
         format.json { render json: @user }
