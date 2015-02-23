@@ -3,6 +3,8 @@ source 'https://rubygems.org'
 ruby '2.2.0'
 
 gem 'rails', '4.2.0'
+gem 'dotenv-rails', '2.0.0.beta', require: 'dotenv/rails-now', group: :development
+
 gem 'slim'
 gem 'slim-rails'
 gem 'bootstrap-sass', '~> 3.3.3'
@@ -15,6 +17,9 @@ gem 'thin'
 gem 'omniauth-openid'
 gem 'jquery-rails'
 gem 'cancancan', '~> 1.10'
+gem 'sidekiq'
+gem 'sinatra', require: false
+gem 'steam-api'
 
 # gem 'jbuilder', '~> 2.0'
 # gem 'bcrypt', '~> 3.1.7'

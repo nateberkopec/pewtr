@@ -1,6 +1,9 @@
 class User < ActiveRecord::Base
   enum system_spec: [ :low, :medium, :high ]
   validates :first_name, :last_name, :has_platform?, presence: true
+  has_one :steam_profile
+  has_many :owned_games, through: :steam_profile
+  after_create { SteamImporter.perform_async(id) }
 
   def self.from_omniauth(hash)
     User.find_or_initialize_by steam_id: hash["uid"].split("/").last

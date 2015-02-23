@@ -1,4 +1,8 @@
 .container
   h1 My Pewtr
 
-  p.lead Nothing here yet
+  p.lead
+    | Welcome, #{current_user.first_name}.
+    - unless current_user.steam_profile
+      | We're still importing your data from steam. Hold tight!
+

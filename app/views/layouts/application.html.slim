@@ -11,5 +11,13 @@ html
     - if current_user
       .container
         .pull-right
+          - if current_user.first_name
+            | Signed in as
+            |  #{current_user.first_name}
+          - if current_user.steam_profile
+            |  /
+            =image_tag "steam_logo_sm.png", height: 20
+            | #{current_user.steam_profile.personaname}
+
           == link_to "Log out", sessions_path, method: :delete, class: 'btn btn-sm'
     == yield

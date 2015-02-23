@@ -11,7 +11,46 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150221200722) do
+ActiveRecord::Schema.define(version: 20150223130509) do
+
+  create_table "owned_games", force: :cascade do |t|
+    t.integer  "steam_profile_id"
+    t.integer  "appid"
+    t.integer  "playtime_forever"
+    t.datetime "created_at",       null: false
+    t.datetime "updated_at",       null: false
+  end
+
+  add_index "owned_games", ["steam_profile_id"], name: "index_owned_games_on_steam_profile_id"
+
+  create_table "steam_apps", force: :cascade do |t|
+    t.integer  "appid"
+    t.string   "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "steam_apps", ["appid"], name: "index_steam_apps_on_appid"
+
+  create_table "steam_profiles", force: :cascade do |t|
+    t.integer  "user_id"
+    t.string   "steamid"
+    t.string   "personaname"
+    t.string   "profileurl"
+    t.string   "avatar"
+    t.string   "avatarmedium"
+    t.string   "avatarfull"
+    t.datetime "lastlogoff"
+    t.string   "steam_level"
+    t.datetime "timecreated"
+    t.string   "loccountrycode"
+    t.string   "locstatecode"
+    t.string   "loccityid"
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
+  end
+
+  add_index "steam_profiles", ["user_id"], name: "index_steam_profiles_on_user_id"
 
   create_table "users", force: :cascade do |t|
     t.string   "steam_id"
