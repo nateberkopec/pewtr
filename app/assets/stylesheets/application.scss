@@ -19,3 +19,7 @@
 @import "bootstrap";
 
 @import "theme";
+
+html, body {
+  -webkit-font-smoothing: antialiased;
+}

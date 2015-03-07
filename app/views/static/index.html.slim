@@ -1,13 +1,26 @@
-.jumbotron
-  .container
-    .text-center
+.bg style="background-image: url('assets/xonotic.jpg'); background-size: cover"
+  .container-fluid style="border-bottom: 1px solid rgba(255,255,255,0.5); height: 96px"
+    .pull-left
       h1 Pewtr
-      p.lead
-        |  Plan video game nights with your friends, via Steam.
+    .pull-right
+      ul.nav.nav-pills
+        li role="presentation"
+          a href="#" style="height: 96px; padding: 36px;border-radius: 0" How it Works
+        li role="presentation"
+          a href="#" style="height: 96px; padding: 36px;border-radius: 0" Other
+        li role="presentation"
+          a href="mailto:nateberkopec@gmail.com" style="height: 96px; padding: 36px;border-radius: 0" Contact
+  .jumbotron style="min-height:80vh;background: none"
+    .container-fluid
+      .row
+        .col-md-4 style="position: absolute; top: 33%"
+          h2 Plan gaming events with your friends.
+          p.lead
+            | Use Steam to see what games you have in common. Vote on the date, time and what games you'll play. The social gaming experience you always wanted.
 
-      == link_to '/auth/steam' do
-        img src="https://steamcommunity-a.akamaihd.net/public/images/signinthroughsteam/sits_small.png"
-.container
+          == link_to '/auth/steam' do
+            img src="https://steamcommunity-a.akamaihd.net/public/images/signinthroughsteam/sits_small.png"
+.container-fluid
   h2 How it Works
 
   ul
